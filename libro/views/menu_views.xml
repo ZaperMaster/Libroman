@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="libro_menu_root" name="Libro" sequence="10"/>
+    <menuitem 
+        id="libro_menu"
+        name="Libro"
+        parent="libro_menu_root"
+        action="action_libro"
+        sequence="1"/>
+
+    <menuitem 
+        id="libro_menu_app"
+        name="Libro"
+        action="action_libro"
+        sequence="1"
+        web_icon="libro,static/description/icon.png"/>
+</odoo>

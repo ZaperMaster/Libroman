@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="libro_view_form" model="ir.ui.view">
+        <field name="name">libro.form</field>
+        <field name="model">libro</field>
+        <field name="arch" type="xml">
+            <form string="Libro">
+                <sheet>
+                    <group>
+                            <field name="Nombre"/>
+                            <field name="Autor"/>
+                    </group>
+                    <group>
+                            <field name="ISBN"/>
+                            <field name="FechaSalida"/>
+                            <field name="Genero"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="libro_view_tree" model="ir.ui.view">
+        <field name="name">libro.tree</field>
+        <field name="model">libro</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="Nombre"/>
+                <field name="Autor"/>
+                <field name="ISBN"/>
+                <field name="FechaSalida"/>
+                <field name="Genero"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_libro" model="ir.actions.act_window">
+        <field name="name">Libro</field>
+        <field name="res_model">libro</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

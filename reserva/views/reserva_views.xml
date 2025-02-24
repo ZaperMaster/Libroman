@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="reserva_view_form" model="ir.ui.view">
+        <field name="name">reserva.form</field>
+        <field name="model">reserva</field>
+        <field name="arch" type="xml">
+            <form string="Reserva">
+                <sheet>
+                    <group>
+                        <field name="Persona"/>
+                        <field name="Telefono"/>
+                        <field name="Libro"/>
+                    </group>
+                    <group>
+                        <field name="FechaReserva"/>
+                        <field name="FechaDevolucion"/>
+                        <field name="Duracion" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="reserva_view_tree" model="ir.ui.view">
+        <field name="name">reserva.tree</field>
+        <field name="model">reserva</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="Persona"/>
+                <field name="Telefono"/>
+                <field name="Libro"/>
+                <field name="FechaReserva"/>
+                <field name="FechaDevolucion"/>
+                <field name="Duracion"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_reserva" model="ir.actions.act_window">
+        <field name="name">Reserva</field>
+        <field name="res_model">reserva</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

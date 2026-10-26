@@ -21,24 +21,24 @@
         </field>
     </record>
 
-    <record id="reserva_view_tree" model="ir.ui.view">
-        <field name="name">reserva.tree</field>
+    <record id="reserva_view_list" model="ir.ui.view">
+        <field name="name">reserva.list</field>
         <field name="model">reserva</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="persona"/>
                 <field name="telefono"/>
                 <field name="libro_id"/>
                 <field name="fecha_reserva"/>
                 <field name="fecha_devolucion"/>
                 <field name="duracion"/>
-            </tree>
+            </list>
         </field>
     </record>
 
     <record id="action_reserva" model="ir.actions.act_window">
         <field name="name">Reserva</field>
         <field name="res_model">reserva</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 </odoo>

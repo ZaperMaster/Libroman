@@ -20,23 +20,23 @@
         </field>
     </record>
 
-    <record id="libro_view_tree" model="ir.ui.view">
-        <field name="name">libro.tree</field>
+    <record id="libro_view_list" model="ir.ui.view">
+        <field name="name">libro.list</field>
         <field name="model">libro</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="nombre"/>
                 <field name="autor"/>
                 <field name="isbn"/>
                 <field name="fecha_salida"/>
                 <field name="genero"/>
-            </tree>
+            </list>
         </field>
     </record>
 
     <record id="action_libro" model="ir.actions.act_window">
         <field name="name">Libro</field>
         <field name="res_model">libro</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 </odoo>

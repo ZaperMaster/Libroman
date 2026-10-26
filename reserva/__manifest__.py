@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'reserva',
-    'version': '1.1',
+    'version': '1.2',
     'category': 'Biblioteca',
     'summary': 'Reservas y préstamos de libros',
     'description': '''

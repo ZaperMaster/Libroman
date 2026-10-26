@@ -3,6 +3,8 @@
 Gestión de una pequeña biblioteca en **Odoo**: catálogo de libros y control de reservas y
 préstamos, repartido en dos módulos independientes.
 
+**Compatible con Odoo 18.**
+
 | Módulo | Qué hace | Depende de |
 |---|---|---|
 | [`libro`](libro/) | Catálogo de libros: título, autor, ISBN, fecha de publicación y género | `base` |
@@ -97,8 +99,9 @@ reserva/
 5. Busca e instala **libro** y después **reserva** (si instalas primero `reserva`, Odoo
    instalará `libro` automáticamente por la dependencia).
 
-> Las vistas de lista usan la etiqueta `<tree>`, válida hasta **Odoo 17**. En Odoo 18 hay
-> que cambiarla por `<list>` y `view_mode` de `tree,form` a `list,form`.
+> Las vistas de lista usan la etiqueta `<list>` de **Odoo 18**. Para Odoo 17 o anterior
+> hay que volver a `<tree>` y cambiar `view_mode` de `list,form` a `tree,form`, o usar la
+> [versión 1.1](https://github.com/ZaperMaster/Libroman/tree/f556c9e).
 
 ## Uso
 
@@ -108,7 +111,7 @@ reserva/
 
 ## Actualizar desde la versión 1.0
 
-La versión 1.1 cambia los nombres de los campos a minúsculas (`Nombre` → `nombre`,
+La versión 1.1 (incluida en la 1.2) cambia los nombres de los campos a minúsculas (`Nombre` → `nombre`,
 `Libro` → `libro_id`…) y el teléfono de número a texto. Los scripts de `migrations/1.1/`
 renombran las columnas antes de cargar el módulo, así que **no se pierden datos**: basta
 con actualizar `libro` y `reserva` desde *Aplicaciones* (o con `-u libro,reserva`).
@@ -123,9 +126,9 @@ con actualizar `libro` y `reserva` desde *Aplicaciones* (o con `-u libro,reserva
 - [x] Nombres de campo en minúsculas, como recomienda la guía de estilo de Odoo.
 - [x] Los libros se muestran por su título al elegirlos en una reserva (antes salía `libro,1`).
 
-## Pendiente
+## Cambios de la versión 1.2
 
-- [ ] Compatibilidad con Odoo 18 (`<tree>` → `<list>`).
+- [x] Compatibilidad con Odoo 18: vistas `<list>` y `view_mode` `list,form`.
 
 ## Autor
 

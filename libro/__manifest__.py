@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'libro',
-    'version': '1.1',
+    'version': '1.2',
     'category': 'Biblioteca',
     'summary': 'Catálogo de libros de la biblioteca',
     'description': '''

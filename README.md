@@ -126,10 +126,6 @@ con actualizar `libro` y `reserva` desde *Aplicaciones* (o con `-u libro,reserva
 - Nombres de campo en minúsculas, como recomienda la guía de estilo de Odoo.
 - Los libros se muestran por su título al elegirlos en una reserva (antes salía `libro,1`).
 
-## Cambios de la versión 1.2
-
-- Compatibilidad con Odoo 18: vistas `<list>` y `view_mode` `list,form`.
-
 ## Autor
 
 Hecho por [ZaperMaster](https://github.com/ZaperMaster).

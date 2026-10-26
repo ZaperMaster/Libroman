@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_reserva,access_reserva,model_reserva,,1,1,1,1
+access_reserva_usuario,reserva usuario,model_reserva,libro.group_biblioteca_usuario,1,1,1,0
+access_reserva_bibliotecario,reserva bibliotecario,model_reserva,libro.group_biblioteca_bibliotecario,1,1,1,1

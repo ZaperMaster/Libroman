@@ -14,30 +14,47 @@ préstamos, repartido en dos módulos independientes.
 - Alta, edición, consulta y borrado de libros.
 - Vista de lista con todos los campos y formulario dividido en dos bloques.
 - Menú propio **Libro** en la barra de aplicaciones de Odoo.
+- Define los grupos de permisos de la biblioteca (ver [Permisos](#permisos)).
 
 | Campo | Tipo | Descripción |
 |---|---|---|
-| `Nombre` | Texto | Título del libro |
-| `Autor` | Texto | Autor o autora |
-| `ISBN` | Texto | Código ISBN |
-| `FechaSalida` | Fecha y hora | Fecha de publicación |
-| `Genero` | Texto | Género literario |
+| `nombre` | Texto (obligatorio) | Título del libro; es el nombre que se muestra al elegirlo en una reserva |
+| `autor` | Texto | Autor o autora |
+| `isbn` | Texto | Código ISBN |
+| `fecha_salida` | Fecha y hora | Fecha de publicación |
+| `genero` | Texto | Género literario |
 
 ### Módulo `reserva`
 - Registro de reservas enlazadas a un libro del catálogo.
 - **Cálculo automático de la duración**: al indicar la fecha de reserva y la de devolución,
   Odoo calcula los días del préstamo y los guarda (`store=True`), así que se puede ordenar
   y filtrar por ellos.
+- **Validaciones**: la fecha de devolución no puede ser anterior a la de reserva, y un
+  mismo libro no puede tener dos reservas con fechas que se solapen (una reserva sin
+  fecha de devolución se considera abierta).
 - Menú propio **Reserva** en la barra de aplicaciones.
 
 | Campo | Tipo | Descripción |
 |---|---|---|
-| `Persona` | Texto | Quién reserva el libro |
-| `Telefono` | Número | Teléfono de contacto |
-| `Libro` | Relación (`Many2one` → `libro`) | Libro reservado |
-| `FechaReserva` | Fecha | Inicio del préstamo |
-| `FechaDevolucion` | Fecha | Fin del préstamo |
-| `Duracion` | Número (calculado, solo lectura) | Días entre reserva y devolución |
+| `persona` | Texto (obligatorio) | Quién reserva el libro |
+| `telefono` | Texto | Teléfono de contacto (admite prefijo `+`, ceros iniciales y espacios) |
+| `libro_id` | Relación (`Many2one` → `libro`, obligatorio) | Libro reservado |
+| `fecha_reserva` | Fecha | Inicio del préstamo |
+| `fecha_devolucion` | Fecha | Fin del préstamo |
+| `duracion` | Número (calculado, solo lectura) | Días entre reserva y devolución |
+
+## Permisos
+
+El módulo `libro` crea la categoría **Biblioteca** con dos grupos, que se asignan en
+*Ajustes → Usuarios*:
+
+| Grupo | Libros | Reservas |
+|---|---|---|
+| **Usuario** | Consultar | Consultar, crear y editar |
+| **Bibliotecario** | Todo (incluido borrar) | Todo (incluido borrar) |
+
+Los menús solo se ven con alguno de estos grupos. El administrador recibe
+**Bibliotecario** al instalar el módulo.
 
 ## Estructura
 
@@ -45,14 +62,20 @@ préstamos, repartido en dos módulos independientes.
 libro/
 ├── __manifest__.py              Datos del módulo y dependencias
 ├── models/libro.py              Modelo `libro`
-├── security/ir.model.access.csv Permisos de acceso
+├── migrations/1.1/              Renombra las columnas de la versión 1.0
+├── security/
+│   ├── libro_security.xml       Grupos Usuario y Bibliotecario
+│   └── ir.model.access.csv      Permisos de cada grupo
+├── static/description/icon.png  Icono de la aplicación
 └── views/
     ├── libro_views.xml          Vistas de lista y formulario + acción
     └── menu_views.xml           Menús
 reserva/
 ├── __manifest__.py
-├── models/reserva.py            Modelo `reserva` y cálculo de la duración
+├── models/reserva.py            Modelo `reserva`, duración y validaciones
+├── migrations/1.1/              Renombra columnas y convierte el teléfono a texto
 ├── security/ir.model.access.csv
+├── static/description/icon.png
 └── views/
     ├── reserva_views.xml
     └── menu_views.xml
@@ -83,14 +106,26 @@ reserva/
 2. Abre **Reserva**, crea una reserva, elige el libro y rellena las fechas.
 3. El campo **Duración** se rellena solo con los días de préstamo.
 
-## Mejoras pendientes
+## Actualizar desde la versión 1.0
 
-- [ ] Añadir el icono `static/description/icon.png` que usan los menús.
-- [ ] Guardar el teléfono como texto (con un número entero se pierden los ceros iniciales y el prefijo `+`).
-- [ ] Validar que la fecha de devolución no sea anterior a la de reserva.
-- [ ] Impedir que un mismo libro tenga dos reservas que se solapen.
-- [ ] Restringir los permisos por grupos (ahora cualquier usuario puede leer, crear, editar y borrar).
-- [ ] Nombres de campo en minúsculas (`nombre`, `autor`…), como recomienda la guía de estilo de Odoo.
+La versión 1.1 cambia los nombres de los campos a minúsculas (`Nombre` → `nombre`,
+`Libro` → `libro_id`…) y el teléfono de número a texto. Los scripts de `migrations/1.1/`
+renombran las columnas antes de cargar el módulo, así que **no se pierden datos**: basta
+con actualizar `libro` y `reserva` desde *Aplicaciones* (o con `-u libro,reserva`).
+
+## Cambios de la versión 1.1
+
+- [x] Icono propio para cada módulo (`static/description/icon.png`).
+- [x] Teléfono guardado como texto: conserva ceros iniciales, prefijo `+` y espacios.
+- [x] La fecha de devolución no puede ser anterior a la de reserva.
+- [x] Un mismo libro no puede tener dos reservas que se solapen.
+- [x] Permisos por grupos: **Usuario** y **Bibliotecario**.
+- [x] Nombres de campo en minúsculas, como recomienda la guía de estilo de Odoo.
+- [x] Los libros se muestran por su título al elegirlos en una reserva (antes salía `libro,1`).
+
+## Pendiente
+
+- [ ] Compatibilidad con Odoo 18 (`<tree>` → `<list>`).
 
 ## Autor
 

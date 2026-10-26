@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="libro_menu_root" name="Libro" sequence="10"/>
+    <menuitem id="libro_menu_root" name="Libro" sequence="10" groups="group_biblioteca_usuario"/>
     <menuitem 
         id="libro_menu"
         name="Libro"
@@ -13,5 +13,6 @@
         name="Libro"
         action="action_libro"
         sequence="1"
-        web_icon="libro,static/description/icon.png"/>
+        web_icon="libro,static/description/icon.png"
+        groups="group_biblioteca_usuario"/>
 </odoo>

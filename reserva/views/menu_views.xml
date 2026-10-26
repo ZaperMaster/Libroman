@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="reserva_menu_root" name="Reserva" sequence="10"/>
+    <menuitem id="reserva_menu_root" name="Reserva" sequence="10" groups="libro.group_biblioteca_usuario"/>
     <menuitem 
         id="reserva_menu"
         name="Reserva"
@@ -13,5 +13,6 @@
         name="Reserva"
         action="action_reserva"
         sequence="1"
-        web_icon="reserva,static/description/icon.png"/>
+        web_icon="reserva,static/description/icon.png"
+        groups="libro.group_biblioteca_usuario"/>
 </odoo>

@@ -1,5 +1,9 @@
 # 📚 Libroman
 
+[![Check](https://github.com/ZaperMaster/Libroman/actions/workflows/check.yml/badge.svg)](https://github.com/ZaperMaster/Libroman/actions/workflows/check.yml)
+![Odoo](https://img.shields.io/badge/Odoo-18-714B67?logo=odoo&logoColor=white)
+[![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-green)](LICENSE)
+
 Gestión de una pequeña biblioteca en **Odoo**: catálogo de libros y control de reservas y
 préstamos, repartido en dos módulos independientes.
 
@@ -125,6 +129,10 @@ con actualizar `libro` y `reserva` desde *Aplicaciones* (o con `-u libro,reserva
 - Permisos por grupos: **Usuario** y **Bibliotecario**.
 - Nombres de campo en minúsculas, como recomienda la guía de estilo de Odoo.
 - Los libros se muestran por su título al elegirlos en una reserva (antes salía `libro,1`).
+
+## Licencia
+
+[MIT](LICENSE).
 
 ## Autor
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_biblioteca" model="ir.module.category">
+        <field name="name">Biblioteca</field>
+        <field name="sequence">50</field>
+    </record>
+
+    <!-- Usuario: consulta el catálogo y gestiona sus reservas -->
+    <record id="group_biblioteca_usuario" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="module_category_biblioteca"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Bibliotecario: control total del catálogo y de las reservas -->
+    <record id="group_biblioteca_bibliotecario" model="res.groups">
+        <field name="name">Bibliotecario</field>
+        <field name="category_id" ref="module_category_biblioteca"/>
+        <field name="implied_ids" eval="[(4, ref('group_biblioteca_usuario'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>

@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo import models, fields
+
 
 class Libro(models.Model):
     _name = 'libro'
     _description = 'Libro'
+    _rec_name = 'nombre'
+    _order = 'nombre'
 
-    Nombre = fields.Char(string='Nombre')
-    Autor = fields.Char(string='Autor')
-    ISBN = fields.Char(string='ISBN')
-    FechaSalida = fields.Datetime(string='FechaSalida')
-    Genero = fields.Char(string='Genero')
+    nombre = fields.Char(string='Nombre', required=True)
+    autor = fields.Char(string='Autor')
+    isbn = fields.Char(string='ISBN')
+    fecha_salida = fields.Datetime(string='Fecha de salida')
+    genero = fields.Char(string='Género')

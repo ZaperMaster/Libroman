@@ -7,14 +7,14 @@
             <form string="Reserva">
                 <sheet>
                     <group>
-                        <field name="Persona"/>
-                        <field name="Telefono"/>
-                        <field name="Libro"/>
+                        <field name="persona"/>
+                        <field name="telefono" widget="phone"/>
+                        <field name="libro_id"/>
                     </group>
                     <group>
-                        <field name="FechaReserva"/>
-                        <field name="FechaDevolucion"/>
-                        <field name="Duracion" readonly="1"/>
+                        <field name="fecha_reserva"/>
+                        <field name="fecha_devolucion"/>
+                        <field name="duracion" readonly="1"/>
                     </group>
                 </sheet>
             </form>
@@ -26,12 +26,12 @@
         <field name="model">reserva</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="Persona"/>
-                <field name="Telefono"/>
-                <field name="Libro"/>
-                <field name="FechaReserva"/>
-                <field name="FechaDevolucion"/>
-                <field name="Duracion"/>
+                <field name="persona"/>
+                <field name="telefono"/>
+                <field name="libro_id"/>
+                <field name="fecha_reserva"/>
+                <field name="fecha_devolucion"/>
+                <field name="duracion"/>
             </tree>
         </field>
     </record>

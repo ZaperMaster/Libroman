@@ -7,13 +7,13 @@
             <form string="Libro">
                 <sheet>
                     <group>
-                            <field name="Nombre"/>
-                            <field name="Autor"/>
+                            <field name="nombre"/>
+                            <field name="autor"/>
                     </group>
                     <group>
-                            <field name="ISBN"/>
-                            <field name="FechaSalida"/>
-                            <field name="Genero"/>
+                            <field name="isbn"/>
+                            <field name="fecha_salida"/>
+                            <field name="genero"/>
                     </group>
                 </sheet>
             </form>
@@ -25,11 +25,11 @@
         <field name="model">libro</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="Nombre"/>
-                <field name="Autor"/>
-                <field name="ISBN"/>
-                <field name="FechaSalida"/>
-                <field name="Genero"/>
+                <field name="nombre"/>
+                <field name="autor"/>
+                <field name="isbn"/>
+                <field name="fecha_salida"/>
+                <field name="genero"/>
             </tree>
         </field>
     </record>

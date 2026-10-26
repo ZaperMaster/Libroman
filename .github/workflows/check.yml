@@ -1,0 +1,44 @@
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    name: Sintaxis de Python y XML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compilar los archivos de Python
+        run: python -m compileall -q libro reserva
+
+      - name: Validar los manifiestos
+        run: |
+          python - <<'PY'
+          import ast, pathlib
+          for manifest in pathlib.Path(".").glob("*/__manifest__.py"):
+              data = ast.literal_eval(manifest.read_text(encoding="utf-8").split("\n", 1)[1])
+              for f in data.get("data", []):
+                  assert (manifest.parent / f).is_file(), f"{manifest.parent}: falta {f}"
+              print(f"{manifest.parent.name} {data['version']}: OK")
+          PY
+
+      - name: Validar los XML
+        run: |
+          python - <<'PY'
+          import pathlib, xml.dom.minidom
+          for f in pathlib.Path(".").glob("*/**/*.xml"):
+              xml.dom.minidom.parse(str(f))
+              print(f"{f}: OK")
+          PY

@@ -118,17 +118,17 @@ con actualizar `libro` y `reserva` desde *Aplicaciones* (o con `-u libro,reserva
 
 ## Cambios de la versión 1.1
 
-- [x] Icono propio para cada módulo (`static/description/icon.png`).
-- [x] Teléfono guardado como texto: conserva ceros iniciales, prefijo `+` y espacios.
-- [x] La fecha de devolución no puede ser anterior a la de reserva.
-- [x] Un mismo libro no puede tener dos reservas que se solapen.
-- [x] Permisos por grupos: **Usuario** y **Bibliotecario**.
-- [x] Nombres de campo en minúsculas, como recomienda la guía de estilo de Odoo.
-- [x] Los libros se muestran por su título al elegirlos en una reserva (antes salía `libro,1`).
+- Icono propio para cada módulo (`static/description/icon.png`).
+- Teléfono guardado como texto: conserva ceros iniciales, prefijo `+` y espacios.
+- La fecha de devolución no puede ser anterior a la de reserva.
+- Un mismo libro no puede tener dos reservas que se solapen.
+- Permisos por grupos: **Usuario** y **Bibliotecario**.
+- Nombres de campo en minúsculas, como recomienda la guía de estilo de Odoo.
+- Los libros se muestran por su título al elegirlos en una reserva (antes salía `libro,1`).
 
 ## Cambios de la versión 1.2
 
-- [x] Compatibilidad con Odoo 18: vistas `<list>` y `view_mode` `list,form`.
+- Compatibilidad con Odoo 18: vistas `<list>` y `view_mode` `list,form`.
 
 ## Autor
 

@@ -1,0 +1,13 @@
+# Dependabot: avisa y abre PRs cuando hay versiones nuevas de las acciones de GitHub Actions.
+# Los módulos de Odoo no tienen dependencias propias (las aporta Odoo), así que solo se vigilan las acciones.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci"
+    groups:
+      acciones:
+        patterns: ["*"]

@@ -132,7 +132,7 @@ con actualizar `libro` y `reserva` desde *Aplicaciones* (o con `-u libro,reserva
 
 ## Licencia
 
-[MIT](LICENSE) ([traducción al español](LICENCIA.md)).
+[MIT](LICENSE).
 
 ## Autor
 

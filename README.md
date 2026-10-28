@@ -105,7 +105,7 @@ reserva/
 
 > Las vistas de lista usan la etiqueta `<list>` de **Odoo 18**. Para Odoo 17 o anterior
 > hay que volver a `<tree>` y cambiar `view_mode` de `list,form` a `tree,form`, o usar la
-> [versión 1.1](https://github.com/ZaperMaster/Libroman/tree/f556c9e).
+> [versión 1.1](https://github.com/ZaperMaster/Libroman/tree/9f24797).
 
 ## Uso
 
